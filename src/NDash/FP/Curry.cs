@@ -1,9 +1,9 @@
 ﻿using NDash.common;
 using System;
 
-namespace NDash
+namespace NDash.FP
 {
-    public static partial class NDashLib
+    public static partial class NDashFP
     {
         public static Func<T1, TResult>
             Curry<T1, TResult>(this Func<T1, TResult> fun)

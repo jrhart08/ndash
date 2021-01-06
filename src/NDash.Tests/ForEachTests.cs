@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using NDash.Tests.TestClasses;
 using Xunit;
+using static NDash.FP.NDashFP;
 
 namespace NDash.Tests
 {
@@ -66,8 +67,8 @@ namespace NDash.Tests
 
             void when_all_actions_succeed()
             {
-                _action1 = NDashLib.Noop;
-                _action2 = NDashLib.Noop;
+                _action1 = Noop;
+                _action2 = Noop;
             }
 
             void given_action_with_arity(int arity)

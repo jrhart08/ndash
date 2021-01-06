@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NDash
+namespace NDash.FP
 {
-    public static partial class NDashLib
+    public static partial class NDashFP
     {
         /// <summary>
         /// Noop function. Does nothing.

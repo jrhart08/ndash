@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NDash;
+﻿using NDash;
 using Xunit;
+using static NDash.FP.NDashFP;
 
 namespace NDash.Tests
 {
@@ -23,7 +21,7 @@ namespace NDash.Tests
             {
                 var names = new[] { "JOHN", "john", "JANE", "jane" };
 
-                Assert.True(names.AreUniqueBy(NDashLib.Identity));
+                Assert.True(names.AreUniqueBy(Identity));
             }
         }
 

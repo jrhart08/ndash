@@ -1,6 +1,5 @@
-using System;
 using Xunit;
-using NDash;
+using NDash.FP;
 
 namespace NDash.Tests
 {
@@ -11,7 +10,7 @@ namespace NDash.Tests
         {
             var obj = new object();
 
-            Assert.Equal(obj, NDashLib.Identity(obj));
+            Assert.Equal(obj, NDashFP.Identity(obj));
         }
     }
 }

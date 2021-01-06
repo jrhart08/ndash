@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NDash.FP;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
@@ -14,7 +15,7 @@ namespace NDash.Tests
 
             Assert.Equal(
                 append("a", "b"),
-                NDashLib.Curry<string, string, string>(append)("a")("b")
+                NDashFP.Curry<string, string, string>(append)("a")("b")
             );
         }
 
@@ -34,7 +35,7 @@ namespace NDash.Tests
         {
             string append(string a, string b, string c, string d) => a + b + c + d;
 
-            var partial = NDashLib.Curry<string, string, string, string, string>(append)("a")("b")("c");
+            var partial = NDashFP.Curry<string, string, string, string, string>(append)("a")("b")("c");
             
             Assert.Equal(
                 append("a", "b", "c", "d"),

@@ -1,6 +1,7 @@
 ﻿using System;
 using Xunit;
 using NDash.Tests.TestClasses;
+using static NDash.FP.NDashFP;
 
 namespace NDash.Tests
 {

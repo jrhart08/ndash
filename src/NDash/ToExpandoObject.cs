@@ -7,7 +7,7 @@ namespace NDash
     public static partial class NDashLib
     {
         /// <summary>
-        /// Copies an IDictionary<string, object> into an ExpandoObject. Useful if you want to quickly make it serializable.
+        /// Copies an <c>IDictionary&lt;string, object&gt;</c> into an ExpandoObject. Useful if you want to quickly make it serializable.
         /// </summary>
         /// <param name="dict"></param>
         /// <returns></returns>

@@ -5,7 +5,7 @@ namespace NDash
     public static partial class NDashLib
     {
         /// <summary>
-        /// Allows piping of Funcs. Chaining Funcs together will build a `Func<TFirstIn, TLastOut>` delegate.
+        /// Allows piping of Funcs. Chaining Funcs together will build a <c>Func&lt;TFirstIn, TLastOut&gt;</c> delegate.
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>

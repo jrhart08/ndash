@@ -43,6 +43,13 @@ namespace NDash
             }
         }
 
+        /// <summary>
+        /// Finds elements unique to the left and right collections.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="leftSource"></param>
+        /// <param name="rightSource"></param>
+        /// <returns></returns>
         public static DisjunctionResult<T> Disjunction<T>(this IEnumerable<T> leftSource, IEnumerable<T> rightSource)
         {
             var uniqueToLeft = leftSource.Except(rightSource);
@@ -51,6 +58,16 @@ namespace NDash
             return new DisjunctionResult<T>(uniqueToLeft, uniqueToRight);
         }
 
+        /// <summary>
+        /// Finds elements unique to the left and right collections,
+        /// using a key selector for comparison.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="leftSource"></param>
+        /// <param name="rightSource"></param>
+        /// <param name="selector"></param>
+        /// <returns></returns>
         public static DisjunctionResult<T> Disjunction<T, TKey>(
             this IEnumerable<T> leftSource,
             IEnumerable<T> rightSource,
@@ -62,6 +79,18 @@ namespace NDash
             return new DisjunctionResult<T>(left, right);
         }
 
+        /// <summary>
+        /// Finds elements unique to the left and right collections,
+        /// using key selectors for comparison.
+        /// </summary>
+        /// <typeparam name="TLeft"></typeparam>
+        /// <typeparam name="TRight"></typeparam>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="leftSource"></param>
+        /// <param name="rightSource"></param>
+        /// <param name="leftSelector"></param>
+        /// <param name="rightSelector"></param>
+        /// <returns></returns>
         public static DisjunctionResult<TLeft, TRight> Disjunction<TLeft, TRight, TKey>(
             this IEnumerable<TLeft> leftSource,
             IEnumerable<TRight> rightSource,
@@ -83,6 +112,16 @@ namespace NDash
             return new DisjunctionResult<TLeft, TRight>(uniqueToLeft, uniqueToRight);
         }
 
+        /// <summary>
+        /// Finds elements unique to left and right collections,
+        /// using a selector to map left-side elements to the right-side elements.
+        /// </summary>
+        /// <typeparam name="TLeft"></typeparam>
+        /// <typeparam name="TRight"></typeparam>
+        /// <param name="leftSource"></param>
+        /// <param name="rightSource"></param>
+        /// <param name="leftSelector"></param>
+        /// <returns></returns>
         public static DisjunctionResult<TLeft, TRight> Disjunction<TLeft, TRight>(
             this IEnumerable<TLeft> leftSource,
             IEnumerable<TRight> rightSource,
@@ -92,6 +131,16 @@ namespace NDash
             return Disjunction(leftSource, rightSource, leftSelector, Identity);
         }
 
+        /// <summary>
+        /// Finds elements unique to left and right collections,
+        /// using a selector to map right-side elements to left-side elements
+        /// </summary>
+        /// <typeparam name="TLeft"></typeparam>
+        /// <typeparam name="TRight"></typeparam>
+        /// <param name="leftSource"></param>
+        /// <param name="rightSource"></param>
+        /// <param name="rightSelector"></param>
+        /// <returns></returns>
         public static DisjunctionResult<TLeft, TRight> Disjunction<TLeft, TRight>(
             this IEnumerable<TLeft> leftSource,
             IEnumerable<TRight> rightSource,

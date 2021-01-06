@@ -26,6 +26,14 @@ namespace NDash
             public IEnumerable<List<T>> AsEnumerable() => new[] { Yes, No };
         }
 
+        /// <summary>
+        /// Separates the collection into 2 collections:
+        /// 1 for elements where the predicate is true, and the other for elements where it's false.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public static SeparateByResult<T> SeparateBy<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
         {
             var yes = new List<T>();

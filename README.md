@@ -3,13 +3,23 @@ General-purpose utility and extension methods
 
 # IEnumerable Extensions
 
-## AreUnique: `IEnumerable<T>` -> `bool`
+## AreUnique(By): `IEnumerable<T>` -> `bool`
 Returns `true` if all elements in a collection are are unique.
 
 Usage:
 ```cs
 bool yes = new[] { 1, 2, 3, 4, 5 }.AreUnique();
 // -> true
+
+var people = new[]
+{
+    new Person("John", "Doe"),
+    new Person("Jane", "Doe"),
+    new Person("Jon", "Snow")
+};
+
+var no = people.AreUniqueBy(p => p.LastName);
+// -> false
 ```
 
 ## CryptoShuffle: `IEnumerable<T>` -> `IEnumerable<T>`
@@ -17,7 +27,7 @@ Returns a shuffled copy of the collection, using a cryptographically secure rand
 
 Usage:
 ```cs
-IEnumerable<int> shuffled = new[] { 1, 2, 3, 4, 5 }.Shuffle();
+IEnumerable<int> shuffled = new[] { 1, 2, 3, 4, 5 }.CryptoShuffle();
 // -> [3, 1, 4, 2, 5]
 // (or some other randomized order)
 ```

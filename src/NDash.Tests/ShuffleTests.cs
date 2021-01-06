@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -27,6 +28,7 @@ namespace NDash.Tests
 
                 // if this somehow fails, it's an act of god
                 Assert.NotEqual(shuffled, ascending);
+                should_have_same_elements(shuffled, ascending);
             }
         }
 
@@ -46,8 +48,14 @@ namespace NDash.Tests
                 var ascending = new[] { 1, 2, 3, 4, 5 };
                 var descending = ascending.Shuffle(new ReverseRandom());
 
-                Assert.Equal(new[] { 5, 4, 3, 2, 1 }, descending);
+                Assert.Equal(new[] { 5, 4, 3, 2, 1 }, descending.ToArray());
+                should_have_same_elements(ascending, descending);
             }
+        }
+
+        static void should_have_same_elements<T>(IEnumerable<T> expected, IEnumerable<T> actual)
+        {
+            Assert.Empty(expected.DisjunctiveUnion(actual));
         }
     }
 }

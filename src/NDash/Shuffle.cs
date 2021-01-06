@@ -18,9 +18,8 @@ namespace NDash
 
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, Random rng)
         {
-            int count = collection.Count();
-
             var shuffled = collection.ToList();
+            int count = shuffled.Count;
 
             for (int i = 0; i < count; i++)
             {

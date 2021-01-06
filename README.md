@@ -3,7 +3,7 @@ General-purpose utility and extension methods
 
 # IEnumerable Extensions
 
-## AreUnique (`IEnumerable<T>` -> `bool`)
+## AreUnique: `IEnumerable<T>` -> `bool`
 Returns `true` if all elements in a collection are are unique.
 
 Usage:
@@ -12,7 +12,7 @@ bool yes = new[] { 1, 2, 3, 4, 5 }.AreUnique();
 // -> true
 ```
 
-## CryptoShuffle (`IEnumerable<T>` -> `IEnumerable<T>`)
+## CryptoShuffle: `IEnumerable<T>` -> `IEnumerable<T>`
 Returns a shuffled copy of the collection, using a cryptographically secure random number generator (just because).
 
 Usage:
@@ -22,7 +22,7 @@ IEnumerable<int> shuffled = new[] { 1, 2, 3, 4, 5 }.Shuffle();
 // (or some other randomized order)
 ```
 
-## Disjunction (`(IEnumerable<T>, IEnumerable<T>)` -> `DisjunctionResult<T>`)
+## Disjunction: `(IEnumerable<T>, IEnumerable<T>)` -> `DisjunctionResult<T>`
 Returns the left and right collections, minus overlapping values.
 
 Usage:
@@ -35,7 +35,7 @@ var (leftOnly, rightOnly) = left.Disjunction(right);
 // rightOnly = [4, 5]
 ```
 
-## DisjunctiveUnion (`(IEnumerable<T>, IEnumerable<T>)` -> `IEnumerable<T>`)
+## DisjunctiveUnion: `(IEnumerable<T>, IEnumerable<T>)` -> `IEnumerable<T>`
 Returns a the left collection concatenated by the right collection, minus overlapping values.
 
 Usage:
@@ -47,7 +47,7 @@ var everythingButIntersection = left.DisjunctiveUnion(right);
 // -> [1, 2, 4, 5]
 ```
 
-## Flatten (`IEnumerable<IEnumerable<T>>` -> `IEnumerable<T>`)
+## Flatten: `IEnumerable<IEnumerable<T>>` -> `IEnumerable<T>`
 Flattens a nested collection. Synonymous with `nestedCollection.SelectMany(list => list)`.
 
 Usage:
@@ -63,7 +63,7 @@ int[] array = matrix.Flatten();
 // -> [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-## ForEach (`(IEnumerable<T>, Action<T>)` -> `void`)
+## ForEach: `(IEnumerable<T>, Action<T>)` -> `void`
 Like `List<T>.ForEach`, but usable on any IEnumerable
 
 Usage:
@@ -73,7 +73,7 @@ var countries = new[] { "Canada", "United States", "Mexico" };
 countries.ForEach(Console.WriteLine);
 ```
 
-## Merge (`(IDictionary<K, V>, IDictionary<K, V>)` -> `IDictionary<K, V>`)
+## Merge: `(IDictionary<K, V>, IDictionary<K, V>)` -> `IDictionary<K, V>`
 Merges 2 dictionaries, with the left dictionary winning on key conflicts.
 
 Usage:
@@ -101,10 +101,10 @@ var merged = person.Merge(employee);
 */
 ```
 
-## MergeRight (`(IDictionary<K, V>, IDictionary<K, V>)` -> `IDictionary<K, V>`)
+## MergeRight: `(IDictionary<K, V>, IDictionary<K, V>)` -> `IDictionary<K, V>`
 Merges 2 dictionaries, with the *right* dictionary winning on key conflicts.
 
-## SeparateBy (`(IEnumerable<T>, Func<T, bool>)` -> `SeparateByResult<T>`)
+## SeparateBy: `(IEnumerable<T>, Func<T, bool>)` -> `SeparateByResult<T>`
 Separates the collection into 2 collections: 1 with elements where the predicate is true, and the other where it's false.
 
 Usage:
@@ -118,7 +118,7 @@ var (evens, odds) = numbers.SeparateBy(IsEven);
 // odds = [1, 3, 5]
 ```
 
-## Shuffle (`IEnumerable<T>` -> `IEnumerable<T>`)
+## Shuffle: `IEnumerable<T>` -> `IEnumerable<T>`
 Copies and shuffles the collection.
 
 Optionally accepts a custom `Random` object, or a `Func<int, int>` random number generator.
@@ -143,7 +143,7 @@ var cards = new[] { 1, 2, 3, 4, 5 };
 var wellShuffled = cards.Shuffle(count => RNG.GetInt32(count));
 ```
 
-## Swap (`(IList<T>, int, int)` -> `IList<T>`)
+## Swap: `(IList<T>, int, int)` -> `IList<T>`
 Swaps the elements at 2 indices. ***This mutates the original list!***
 
 Usage:

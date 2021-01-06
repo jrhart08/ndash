@@ -6,12 +6,12 @@ namespace NDash
 {
     public static partial class NDashLib
     {
-        public class PartitionResult<T>
+        public class SeparateByResult<T>
         {
             public List<T> Yes { get; private set; }
             public List<T> No { get; private set; }
 
-            public PartitionResult(List<T> yes, List<T> no)
+            public SeparateByResult(List<T> yes, List<T> no)
             {
                 Yes = yes;
                 No = no;
@@ -26,7 +26,7 @@ namespace NDash
             public IEnumerable<List<T>> AsEnumerable() => new[] { Yes, No };
         }
 
-        public static PartitionResult<T> Partition<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
+        public static SeparateByResult<T> SeparateBy<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
         {
             var yes = new List<T>();
             var no = new List<T>();
@@ -38,7 +38,7 @@ namespace NDash
                 list.Add(item);
             }
 
-            return new PartitionResult<T>(yes, no);
+            return new SeparateByResult<T>(yes, no);
         }
     }
 }

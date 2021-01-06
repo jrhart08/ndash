@@ -14,7 +14,7 @@ namespace NDash.Tests
             {
                 IEnumerable<int> empty = new List<int>();
 
-                var (evens, odds) = empty.Partition(IsEven);
+                var (evens, odds) = empty.SeparateBy(IsEven);
 
                 Assert.Empty(evens);
                 Assert.Empty(odds);
@@ -30,7 +30,7 @@ namespace NDash.Tests
             [Fact]
             public void should_partition_by_predicate()
             {
-                var (evens, odds) = NDashLib.Partition(numbers, IsEven);
+                var (evens, odds) = NDashLib.SeparateBy(numbers, IsEven);
                 Assert.Equal(expectedEvens, evens);
                 Assert.Equal(expectedOdds, odds);
             }
@@ -38,7 +38,7 @@ namespace NDash.Tests
             [Fact]
             public void should_provide_extension_method()
             {
-                var (evens, odds) = numbers.Partition(IsEven);
+                var (evens, odds) = numbers.SeparateBy(IsEven);
                 Assert.Equal(expectedEvens, evens);
                 Assert.Equal(expectedOdds, odds);
             }

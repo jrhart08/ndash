@@ -6,22 +6,22 @@ namespace NDash
 {
     public static partial class NDashLib
     {
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection)
+        public static List<T> Shuffle<T>(this IEnumerable<T> collection)
         {
             return collection.Shuffle(new Random());
         }
 
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, int seed)
+        public static List<T> Shuffle<T>(this IEnumerable<T> collection, int seed)
         {
             return collection.Shuffle(new Random(seed));
         }
 
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, Random rng)
+        public static List<T> Shuffle<T>(this IEnumerable<T> collection, Random rng)
         {
             return collection.Shuffle(rng.Next);
         }
 
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, Func<int, int> randomNumberGenerator)
+        public static List<T> Shuffle<T>(this IEnumerable<T> collection, Func<int, int> randomNumberGenerator)
         {
             var shuffled = collection.ToList();
             int count = shuffled.Count;

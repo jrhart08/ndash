@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Xunit;
 
 namespace NDash.Tests
 {
-    public class NDash_Partition_Tests
+    public class PartitionTests
     {
         static bool IsEven(int i) => i % 2 == 0;
 

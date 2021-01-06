@@ -4,7 +4,7 @@ using NDash;
 
 namespace NDash.Tests
 {
-    public class NDash_Identity_Tests
+    public class IdentityTests
     {
         [Fact]
         public void should_return_parameter_by_reference()

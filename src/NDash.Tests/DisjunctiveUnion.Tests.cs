@@ -2,7 +2,7 @@
 
 namespace NDash.Tests
 {
-    public class NDash_DisjunctiveUnion_Tests
+    public class DisjunctiveUnionTests
     {
         public class given_no_selector
         {

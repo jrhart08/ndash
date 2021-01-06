@@ -1,13 +1,10 @@
 ﻿using NDash.Tests.TestClasses;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace NDash.Tests
 {
-    public class NDash_Disjunction_Tests
+    public class DisjunctionTests
     {
         public class given_empty_left_collection
         {

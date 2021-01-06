@@ -6,7 +6,7 @@ using Xunit;
 
 namespace NDash.Tests
 {
-    public class NDash_Unique_Tests
+    public class UniqueTests
     {
         public class Positives
         {

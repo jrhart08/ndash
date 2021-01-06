@@ -6,7 +6,7 @@ using static NDash.NDashLib;
 
 namespace NDash.Tests
 {
-    public class NDash_AsFunc_Tests
+    public class AsFuncTests
     {
         [Fact]
         public void TestArity0()

@@ -3,7 +3,7 @@ using Xunit;
 
 namespace NDash.Tests
 {
-    public class NDash_Flatten_Tests
+    public class FlattenTests
     {
         public class given_collection_of_collections
         {

@@ -4,7 +4,7 @@ using NDash.Tests.TestClasses;
 
 namespace NDash.Tests
 {
-    public class NDash_Compose_Tests
+    public class ComposeTests
     {
         static readonly Func<Developer, string> getFullName = dev => $"{dev.FirstName} {dev.LastName}";
 

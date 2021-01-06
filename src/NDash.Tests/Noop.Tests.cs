@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xunit;
 
 namespace NDash.Tests
 {
-    public class NDash_Noop_Tests
+    public class NoopTests
     {
         [Fact]
         public void should_accept_up_to_16_parameters_of_varying_types()

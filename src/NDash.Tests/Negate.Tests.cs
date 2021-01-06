@@ -5,7 +5,7 @@ using Xunit;
 
 namespace NDash.Tests
 {
-    public class NDash_Negate_Tests
+    public class NegateTests
     {
         [Fact]
         public void TestArity0()

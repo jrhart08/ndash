@@ -18,12 +18,17 @@ namespace NDash
 
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, Random rng)
         {
+            return collection.Shuffle(rng.Next);
+        }
+
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, Func<int, int> randomNumberGenerator)
+        {
             var shuffled = collection.ToList();
             int count = shuffled.Count;
 
             for (int i = 0; i < count; i++)
             {
-                int next = rng.Next(count);
+                int next = randomNumberGenerator(count);
 
                 shuffled.Swap(i, next);
             }

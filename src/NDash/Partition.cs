@@ -6,23 +6,8 @@ namespace NDash
 {
     public static partial class NDashLib
     {
-        public class PartitionResult<T>
+        public record PartitionResult<T>(List<T> Yes, List<T> No)
         {
-            public List<T> Yes { get; private set; }
-            public List<T> No { get; private set; }
-
-            public PartitionResult(List<T> yes, List<T> no)
-            {
-                Yes = yes;
-                No = no;
-            }
-
-            public void Deconstruct(out List<T> yes, out List<T> no)
-            {
-                yes = Yes;
-                no = No;
-            }
-
             public IEnumerable<List<T>> AsEnumerable() => new[] { Yes, No };
         }
 

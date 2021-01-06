@@ -6,42 +6,8 @@ namespace NDash
 {
     public static partial class NDashLib
     {
-        // TODO: upgrade to C# 9 for records
-        public class DisjunctionResult<T>
-        {
-            public IEnumerable<T> Left { get; private set; }
-            public IEnumerable<T> Right { get; private set; }
-
-            public DisjunctionResult(IEnumerable<T> left, IEnumerable<T> right)
-            {
-                Left = left;
-                Right = right;
-            }
-
-            public void Deconstruct(out IEnumerable<T> left, out IEnumerable<T> right)
-            {
-                left = Left;
-                right = Right;
-            }
-        }
-
-        public class DisjunctionResult<TLeft, TRight>
-        {
-            public IEnumerable<TLeft> Left { get; private set; }
-            public IEnumerable<TRight> Right { get; private set; }
-
-            public DisjunctionResult(IEnumerable<TLeft> left, IEnumerable<TRight> right)
-            {
-                Left = left;
-                Right = right;
-            }
-
-            public void Deconstruct(out IEnumerable<TLeft> left, out IEnumerable<TRight> right)
-            {
-                left = Left;
-                right = Right;
-            }
-        }
+        public record DisjunctionResult<T>(IEnumerable<T> Left, IEnumerable<T> Right);
+        public record DisjunctionResult<L, R>(IEnumerable<L> Left, IEnumerable<R> Right);
 
         public static DisjunctionResult<T> Disjunction<T>(this IEnumerable<T> leftSource, IEnumerable<T> rightSource)
         {
@@ -62,11 +28,11 @@ namespace NDash
             return new DisjunctionResult<T>(left, right);
         }
 
-        public static DisjunctionResult<TLeft, TRight> Disjunction<TLeft, TRight, TKey>(
-            this IEnumerable<TLeft> leftSource,
-            IEnumerable<TRight> rightSource,
-            Func<TLeft, TKey> leftSelector,
-            Func<TRight, TKey> rightSelector
+        public static DisjunctionResult<L, R> Disjunction<L, R, TKey>(
+            this IEnumerable<L> leftSource,
+            IEnumerable<R> rightSource,
+            Func<L, TKey> leftSelector,
+            Func<R, TKey> rightSelector
         )
         {
             var leftKeyed = leftSource.ToLookup(leftSelector);
@@ -80,22 +46,22 @@ namespace NDash
                 .Where(group => !leftKeyed[group.Key].Any())
                 .Flatten();
 
-            return new DisjunctionResult<TLeft, TRight>(uniqueToLeft, uniqueToRight);
+            return new DisjunctionResult<L, R>(uniqueToLeft, uniqueToRight);
         }
 
-        public static DisjunctionResult<TLeft, TRight> Disjunction<TLeft, TRight>(
-            this IEnumerable<TLeft> leftSource,
-            IEnumerable<TRight> rightSource,
-            Func<TLeft, TRight> leftSelector
+        public static DisjunctionResult<L, R> Disjunction<L, R>(
+            this IEnumerable<L> leftSource,
+            IEnumerable<R> rightSource,
+            Func<L, R> leftSelector
         )
         {
             return Disjunction(leftSource, rightSource, leftSelector, Identity);
         }
 
-        public static DisjunctionResult<TLeft, TRight> Disjunction<TLeft, TRight>(
-            this IEnumerable<TLeft> leftSource,
-            IEnumerable<TRight> rightSource,
-            Func<TRight, TLeft> rightSelector
+        public static DisjunctionResult<L, R> Disjunction<L, R>(
+            this IEnumerable<L> leftSource,
+            IEnumerable<R> rightSource,
+            Func<R, L> rightSelector
         )
         {
             return Disjunction(leftSource, rightSource, Identity, rightSelector);

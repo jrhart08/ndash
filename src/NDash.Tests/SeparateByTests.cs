@@ -3,7 +3,7 @@ using Xunit;
 
 namespace NDash.Tests
 {
-    public class PartitionTests
+    public class SeparateByTests
     {
         static bool IsEven(int i) => i % 2 == 0;
 
@@ -28,7 +28,7 @@ namespace NDash.Tests
             readonly int[] expectedOdds = new[] { 1, 3 };
             
             [Fact]
-            public void should_partition_by_predicate()
+            public void should_separate_by_predicate()
             {
                 var (evens, odds) = NDashLib.SeparateBy(numbers, IsEven);
                 Assert.Equal(expectedEvens, evens);

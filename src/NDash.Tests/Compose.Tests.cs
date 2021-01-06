@@ -8,11 +8,11 @@ namespace NDash.Tests
     {
         static readonly Func<Developer, string> getFullName = dev => $"{dev.FirstName} {dev.LastName}";
 
-        static readonly Func<string, string> hello = name => $"Hello, {name}";
-
-        static readonly Func<string, string> exclaim = str => $"{str}!";
-
-        static readonly Func<string, string> yell = str => str.ToUpper();
+        string Hello(string name) => $"Hello, {name}";
+        
+        string Exclaim(string str) => $"{str}!";
+        
+        string Yell(string str) => str.ToUpper();
 
         [Fact]
         public void should_be_chainable()
@@ -20,9 +20,9 @@ namespace NDash.Tests
             var joseph = new Developer("Joseph", "Hart", 25);
 
             Func<Developer, string> veryExcitedGreeting = getFullName
-                .Compose(exclaim)
-                .Compose(yell)
-                .Compose(hello);
+                .Compose(Exclaim)
+                .Compose(Yell)
+                .Compose(Hello);
 
             Assert.Equal("Hello, JOSEPH HART!", veryExcitedGreeting(joseph));
         }
@@ -35,9 +35,9 @@ namespace NDash.Tests
             var joseph = new Developer("Joseph", "Hart", 25);
 
             Func<Developer, int> greetingLength = getFullName
-                .Compose(hello)
-                .Compose(exclaim)
-                .Compose(yell)
+                .Compose(Hello)
+                .Compose(Exclaim)
+                .Compose(Yell)
                 .Compose(GetLength);
 
             Assert.Equal(19, greetingLength(joseph));
